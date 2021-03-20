@@ -1,17 +1,28 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
+import MovieCard from "./MovieCard";
+import { Grid } from 'semantic-ui-react';
 
-function MovieList(props) {
-    const movieList = <div>Movies List here....</div>
-    const emptyMessage = <div>Thereare no movies yet...</div>
+function MovieList({ movies }) {
+  const movieList = (
+    <Grid>
+      <Grid.Row columns={4}>
+        {movies.map((movie) => (
+          <Grid.Column key={movie.id}>
+            <MovieCard movie={movie} />
+          </Grid.Column>
+        ))}
+      </Grid.Row>
+    </Grid>
+  );
 
-    return (
-      <div>{props.movies.length === 0 ? emptyMessage : movieList}</div>
-    )
+
+  const emptyMessage = <div>There are no movies yet...</div>;
+  return <div>
+           
+      {movies.length === 0 ? emptyMessage : movieList}</div>;
 }
 
-MovieList.propTypes = {movies:PropTypes.array.isRequired}
+MovieList.propTypes = { movies: PropTypes.array.isRequired };
 
-
-export default MovieList
-
+export default MovieList;
