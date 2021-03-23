@@ -23,7 +23,7 @@ export class MoviesPage extends Component {
     return (
       <div>
         <h2>Movies List</h2>
-        <ScaleLoader color={'#36D7B7'} loading={this.props.moviesReducer.fetching}/>
+        <ScaleLoader width={6} color={'#36D7B7'} loading={this.props.moviesReducer.fetching}/>
         {errMessage ? (
           <h3>Error data! ({errMessage})</h3>
         ) : (
