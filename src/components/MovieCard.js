@@ -1,5 +1,26 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image,Button } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
+
+const processButtons =movieId=> {return (
+  <div>
+    <Button.Group>
+      <Button animated as={Link} to={`/movie/${movieId}`}>
+        <Button.Content visible>Edit</Button.Content>
+        <Button.Content hidden>          
+          <Icon name="edit" />
+        </Button.Content>
+      </Button>
+      <Button animated="vertical">
+        <Button.Content visible>Delete</Button.Content>
+        <Button.Content hidden>
+          <Icon name="trash alternate" />
+        </Button.Content>
+      </Button>
+    </Button.Group>
+  </div>
+);}
+
 
 const MovieCard = ({movie}) => (
   <Card>
@@ -18,6 +39,10 @@ const MovieCard = ({movie}) => (
         <Icon name='user' />
         {movie.imdb_score}
       </a>
+    </Card.Content>
+    
+    <Card.Content extra>
+    {processButtons(movie.id)}
     </Card.Content>
   </Card>
 )
